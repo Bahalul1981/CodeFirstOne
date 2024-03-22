@@ -1,0 +1,48 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+
+<div >
+    <h2>Code First info Step by step</h2>
+    <ul>
+        <li> <h5>Create a Razor page App from visual Studio</h5></li>
+        <li>Go to NuGet Package Manager</li>
+        <li>
+            Download Microsoft.EntityFrameworkCore(Choose the version as your created application version)<br />
+            Download Microsoft.EntityFrameworkCore.SqlServer(Choose the version as your created application version)<br />
+            Download Microsoft.EntityFrameworkCore.Tools(Choose the version as your created application version)<br />
+            Download Microsoft.VisualStudio.Web.CodeGeneration.Designe(Choose the version as your created application version) (Optional)<br />
+        </li>
+        <li>Create a folder 'Model' > Create your database tables classes there</li>
+        <li>Creare a folder 'Data' > Create your database connection 'AppDbConnection' code there and add all database table </li>
+        <li>
+            Go to 'Program.cs' > under this line: ' builder.Services.AddRazorPages();' <br /> Pest this code:
+            builder.Services.AddDbContext<AppDbContext>
+                (options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+        </li>
+        <li>
+            Go to 'appsettings.json'  <br /> Pest this line: {
+            "ConnectionStrings": {
+            "DefaultConnection": "Server=localhost;Database=DewanFashion;Trusted_Connection=True;TrustServerCertificate=true;MultipleActiveResultSets=true"
+            },
+            "Logging": {
+            "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information"
+            }
+            },
+            "AllowedHosts": "*"
+            } <br />
+            (Dont forget to Rename your 'Database table name'. Give any nice name as you want to create)
+        </li>
+        <li>Go 'Tools' in top of the application <br />NuGet Package Manager <br /> package Manager Console</li>
+        <li>Create a migration folder 'add-migration initial' <br />'update-database'</li>
+        <li><h5>You are Done.</h5></li>
+    </ul>
+
+</div>
